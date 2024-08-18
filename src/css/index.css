@@ -1,0 +1,343 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+.desktop {
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: repeat(40, 2.5%);
+  grid-template-rows: repeat(40, 2.5%);
+
+  background-image: url('/public/images/bgs/desktopbg.webp');
+  background-size: cover;
+}
+
+.file-explorer {
+  width: 100%;
+  height: 100%;
+}
+
+.aero-border {
+  border: solid rgba(200, 200, 240, 1) 1px;
+  border-radius: 8px;
+  background-image: url('/public/images/bgs/aeroglasstint.png');
+  background-size: 100% 100%;
+  background-color: rgba(155, 202, 247, 0.394);
+  background-blend-mode: lighten;
+  backdrop-filter: blur(8px);
+  box-shadow: black 0 0 6px 2px;
+}
+
+.window-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  width: calc(100% - 12px);
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding: 0 6px;
+}
+
+.top-bar p, .star-button {
+  text-shadow: 0 0 4px white;
+}
+
+.top-bar button, .star-button {
+  height: 100%;
+  background: linear-gradient(0deg, rgba(176, 197, 222, 0.6) 0%, rgba(141, 165, 186, 0.6) 46%, rgba(141, 165, 186, 0.6) 50%, rgba(180, 198, 214, 0.6) 54%, rgba(204, 220, 234, 0.6) 100%);
+
+  border: solid #3a4956 1px;
+  border-top: solid rgba(200, 200, 240, 1) 1px;
+  outline: solid rgba(220, 220, 240, 0.4) 1px;
+  outline-offset: -2px;
+}
+
+.top-bar button:hover, .nav-buttons button:hover, .star-button:hover {
+  filter: brightness(1.1);
+}
+
+.top-bar button:active, .nav-buttons button:active, .star-button:active {
+  filter: brightness(0.9);
+}
+
+.toolbar, .nav-buttons, .textbox, .file-top-bar, .file-top-bar div, .browser-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar {
+  margin: 0 6px;
+}
+
+.nav-buttons div {
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(0deg, rgba(224, 240, 255, 1) 0%, rgba(200, 220, 239, 0) 46%, rgba(200, 220, 239, 0) 50%, rgba(200, 220, 239, 0) 54%, rgba(106, 124, 143, 1) 100%);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.nav-buttons button {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(0deg, #86ffff 0%, #0063b7 30%, #001a5a 49.9%, #2f65b1 50.1%, #376db5 70%, #c4cfe6 100%);
+  border: rgba(0, 0, 0, 0.5) solid 1px;
+  border-radius: 50%;
+}
+
+.textbox {
+  height: 24px;
+  width: calc(50% - 20px);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-top: solid #555c62 1px;
+  border-left: #7a8188 solid 1px;
+  border-right: #7a8188 solid 1px;
+  border-bottom: #aebbc8 solid 1px;
+  border-radius: 2px;
+  outline: rgba(255, 255, 255, 0.5) solid 1px;
+  margin: 8px 10px;
+}
+
+.textbox input {
+  border: none;
+  background: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.screen {
+  width: calc(100% - 14px);
+  height: calc(100% - 15px);
+
+  margin: 6px 7px 9px 7px;
+  border-radius: 2px;
+  border: solid black 1px;
+  outline: solid rgba(200, 200, 240, 1) 1px;
+}
+
+.file-explorer-grid {
+  display: grid;
+  grid-template-columns: 160px calc(100% - 160px);
+  grid-template-rows: 32px calc(100% - 90px) 58px;
+}
+
+.file-top-bar {
+  width: calc(100% - 2px);
+  grid-column: span 2;
+  justify-content: space-between;
+  margin: 1px;
+  background: linear-gradient(0deg, #dce6f5 0%, #dce6f5 50%, #edf5fd 50.1%, #edf5fd 100%);
+  border-bottom: solid #cddaea 1px;
+  outline: #a0afc3 solid 1px;
+}
+
+.file-top-bar button {
+  border: none;
+  background: none;
+}
+
+.file-navigator {
+  height: 100%;
+  border-right: #a0afc3 solid 1px;
+}
+
+.file-details {
+  grid-column: span 2;
+  grid-row: 3;
+  margin: 1px;
+  width: calc(100% - 2px);
+  background: #edf3fa;
+  border-top: solid 1px #e8eff8;
+  outline: #c3d3e8 solid 1px;
+}
+
+.file-grid {
+  height: 100%;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.file-folder, .file-file {
+  width: 100px;
+  height: 100px;
+  margin: 12.5px;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  padding-top: 15px;
+  border: none;
+  background: none;
+  border-radius: 4px;
+}
+
+.file-folder:hover, .file-file:hover {
+  border: none;
+  outline: solid rgba(255, 255, 255, 0.5) 2px;
+  outline-offset: -2px;
+  background: rgba(166, 198, 240, 0.7);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.internet-explorer-grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20px 32px 3px calc(100% - 55px);
+}
+
+.browser-toolbar {
+  background: linear-gradient(0deg, #dce6f5 0%, #dce6f5 60%, #edf5fd 60.1%, #edf5fd 100%);
+  font-size: 12px;
+  text-shadow: 0 0 2px white;
+  border-bottom: solid 1px #5f6678;
+}
+
+.browser-toolbar p {
+  margin: 2px 5px;
+}
+
+.browser-tab {
+  text-align: center;
+  background: linear-gradient(0deg, #ffffff 0%, #ebf7fb 30%, #c9e3f9 30.1%, #b6c5f5 100%);
+  height: calc(100% - 5px);
+  border: solid 1px #5f6678;
+  border-radius: 4px 4px 0 0;
+  border-bottom: none;
+  filter: brightness(0.9);
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.selected {
+  background: linear-gradient(0deg, #b6c5f5 0%, #c9e3f9 70%, #ebf7fb 70.1%, #ffffff 100%);
+  height: calc(100% - 4px);
+  filter: brightness(1);
+  margin-bottom: -1px;
+  cursor: default;
+}
+
+.extra-browser-tab {
+  background: linear-gradient(0deg, #dce6f5 0%, #dce6f5 70%, #edf5fd 70.1%, #edf5fd 100%);
+  height: calc(100% - 9px);
+  aspect-ratio: 1/1;
+  margin-bottom: 0;
+  cursor: not-allowed;
+}
+
+.media-player-grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 32px calc(100% - 32px);
+}
+
+.map-grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20px 3px calc(100% - 23px);
+}
+
+.height-100 {
+  max-height: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+@media screen and (max-width: 900px) {
+  .desktop {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .desktop > div {
+    height: 500px;
+    min-height: 500px;
+  }
+
+  .file-explorer-grid {
+    grid-template-columns: 60px calc(100% - 60px);
+    grid-template-rows: 32px calc(100% - 90px) 58px;
+  }
+}
+
+.leaflet-popup-content {
+  font-family: ms ui gothic;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  background-color: black;
+  border: inset 3px;
+  padding: 3px;
+  color: lime;
+  text-shadow: 0 0 3px lime;
+  font-size: 12px;
+}
+
+.leaflet-popup-tip {
+  background:-webkit-repeating-linear-gradient(315deg, #000000 0%, #50508b 1%);
+  background:-o-repeating-linear-gradient(315deg, #000000 0%, #50508b 1%);
+  background:-moz-repeating-linear-gradient(315deg, #000000 0%, #50508b 1%);
+  background:repeating-linear-gradient(315deg, #000000 0%, #50508b 1%);
+  outline: solid lightblue 1px;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out, .leaflet-popup-content-wrapper {
+  background:-webkit-repeating-linear-gradient(0deg, #000000 0%, #50508b 1%);
+  background:-o-repeating-linear-gradient(0deg, #000000 0%, #50508b 1%);
+  background:-moz-repeating-linear-gradient(0deg, #000000 0%, #50508b 1%);
+  background:repeating-linear-gradient(0deg, #000000 0%, #50508b 1%);
+  outline: solid lightblue 1px;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  font: 18px 'ms ui gothic';
+}
+
+.leaflet-control-zoom-in:hover, .leaflet-control-zoom-out:hover {
+  outline: solid cyan 1px;
+}
+
+.leaflet-control-zoom-in:hover span, .leaflet-control-zoom-out:hover span {
+  color: cyan;
+}
+
+.leaflet-control-zoom-in:active, .leaflet-control-zoom-out:active {
+  outline: solid lightblue 2px;
+  outline-offset: -1px;
+}
+
+.leaflet-control-zoom-in:active span, .leaflet-control-zoom-out:active span {
+  color: lightblue;
+}
+
+.leaflet-control-zoom-in span, .leaflet-control-zoom-out span {
+  color: lightblue;
+}
+
+.leaflet-container .leaflet-control-attribution {
+  background-color: rgba(0,0,0,0.6);
+}
+
+.leaflet-control-attribution.leaflet-control a, .leaflet-control-attribution.leaflet-control span {
+  font-family: ms ui gothic;
+  color: lightblue;
+}

@@ -1,0 +1,47 @@
+{
+    "images": [
+        {
+            "id": 0,
+            "title": "TEST IMAGE",
+            "date": "8-13-24",
+            "short": "test short",
+            "description": "this is a test image asdasdasdasdasdasdasdasdsadasdasd",
+            "source": "/images/bgs/test.JPG",
+            "thumb": "/images/bgs/test.JPG",
+            "rating": "4.8",
+            "folder": 0,
+            "type": "image",
+            "location": [41.836405543203604, -89.4198049096924]
+        },
+        {
+            "id": 1,
+            "title": "TEST IMAGE 2",
+            "date": "8-14-24",
+            "short": "test short 2",
+            "description": "this isasdasdsa a test image asdasdasdasdasdasdasdasdsadasdasd",
+            "source": "/images/bgs/test.JPG",
+            "thumb": "/images/bgs/test.JPG",
+            "rating": "3.1",
+            "folder": 2,
+            "type": "image",
+            "location": [41.836405543203604, -89.4198049096924]
+        }
+    ],
+    "folders": [
+        {
+            "id": 0,
+            "title": "Pictures",
+            "icon": "/images/bgs/image-folder.ico"
+        },
+        {
+            "id": 1,
+            "title": "Videos",
+            "icon": "/images/bgs/video-folder.ico"
+        },
+        {
+            "id": 2,
+            "title": "Test Folder",
+            "icon": "/images/bgs/image-folder.ico"
+        }
+    ]
+}
