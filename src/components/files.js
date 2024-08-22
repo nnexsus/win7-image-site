@@ -9,6 +9,7 @@ const Files = ({files}) => {
     const fetchImageData = (id) => {
         localStorage.setItem('activeImage', id)
         document.getElementById('fetchImageData').click()
+        document.getElementById('fetchImageDetails').click()
     }
 
     const searchQuery = (value) => {
@@ -79,6 +80,55 @@ const Files = ({files}) => {
         )
     }
 
+    const FileDetails = ({files}) => {
+
+        const [imagedata, setImagedata] = useState({camera: '', dim: '', ap: '', exp: '', iso: '', mm: '', size: ''})
+
+        const [detailStore, setDetailStore] = useState({"images": [], "folders": [
+            {
+              "id": 6,
+              "title": "Pictures",
+              "icon": "/images/bgs/image-folder.png"
+            },
+            {
+                "id": 7,
+                "title": "Videos",
+                "icon": "/images/bgs/video-folder.png"
+        }]})
+
+        const fetchImageData = () => {
+            if (localStorage.getItem('activeImage') !== null) {
+                detailStore.images.forEach((el) => {
+                if (el.id === parseInt(localStorage.getItem('activeImage'))) {
+                    if (el.settings === null) return setImagedata({camera: '', dim: '', ap: '', exp: '', iso: '', mm: '', size: ''})
+                    var re = el.settings.replace(/'/g, '"')
+                    console.log(re)
+                    setImagedata(JSON.parse(re))
+                }
+              })
+            }
+        }
+
+        useEffect(() => {
+            setDetailStore(files)
+        }, [files])
+
+        return (
+            <>
+                <button id="fetchImageDetails" onClick={() => fetchImageData()} style={{display: 'none'}} ></button>
+                <div style={{display: 'flex', justifyContent: 'space-between', margin: '0 13px'}}>
+                    <p style={{marginTop: '2px', color: 'gray'}}>Camera: <br/><span style={{color: '#248aab'}}>{imagedata.camera}</span></p>
+                    <p style={{marginTop: '2px', color: 'gray'}}>Dimensions: <br/><span style={{color: '#248aab'}}>{imagedata.dim}</span></p>
+                    <p style={{marginTop: '2px', color: 'gray'}}>Aperature: <br/><span style={{color: '#248aab'}}>{imagedata.ap}</span></p>
+                    <p style={{marginTop: '2px', color: 'gray'}}>Exposure: <br/><span style={{color: '#248aab'}}>{imagedata.exp}</span></p>
+                    <p style={{marginTop: '2px', color: 'gray'}}>ISO: <br/><span style={{color: '#248aab'}}>{imagedata.iso}</span></p>
+                    <p style={{marginTop: '2px', color: 'gray'}}>Focal (mm): <br/><span style={{color: '#248aab'}}>{imagedata.mm}</span></p>
+                    <p style={{marginTop: '2px', color: 'gray'}}>Filesize: <br/><span style={{color: '#248aab'}}>{imagedata.size}</span></p>
+                </div>
+            </>
+        )
+    }
+
     return (
         <>
             <div className="toolbar">
@@ -124,7 +174,7 @@ const Files = ({files}) => {
                 <FileGrid/>
 
                 <div className="file-details">
-
+                    <FileDetails files={files}/>
                 </div>
             </div>
         </>
