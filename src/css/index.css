@@ -284,28 +284,46 @@ body {
 }
 
 .leaflet-popup-content-wrapper .leaflet-popup-content {
-  background-color: black;
-  border: inset 3px;
-  padding: 3px;
-  color: lime;
-  text-shadow: 0 0 3px lime;
-  font-size: 12px;
+  color: white;
+  text-shadow: 0 0 3px black;
+  font-size: 16px;
 }
 
-.leaflet-popup-tip {
-  background:-webkit-repeating-linear-gradient(315deg, #000000 0%, #50508b 1%);
-  background:-o-repeating-linear-gradient(315deg, #000000 0%, #50508b 1%);
-  background:-moz-repeating-linear-gradient(315deg, #000000 0%, #50508b 1%);
-  background:repeating-linear-gradient(315deg, #000000 0%, #50508b 1%);
-  outline: solid lightblue 1px;
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  border: solid rgba(200, 200, 240, 1) 1px;
+  border-radius: 8px;
+  background-image: url('/public/images/bgs/aeroglasstint.png');
+  background-size: 100% 100%;
+  background-color: rgba(155, 202, 247, 0.194);
+  background-blend-mode: lighten;
+  backdrop-filter: blur(3px);
+  box-shadow: black 0 0 6px 2px;
 }
 
-.leaflet-control-zoom-in, .leaflet-control-zoom-out, .leaflet-popup-content-wrapper {
-  background:-webkit-repeating-linear-gradient(0deg, #000000 0%, #50508b 1%);
-  background:-o-repeating-linear-gradient(0deg, #000000 0%, #50508b 1%);
-  background:-moz-repeating-linear-gradient(0deg, #000000 0%, #50508b 1%);
-  background:repeating-linear-gradient(0deg, #000000 0%, #50508b 1%);
+.leaflet-popup-content-wrapper p {
+  text-align: center;
+}
+
+.leaflet-popup-content {
+  outline: solid rgba(200, 200, 240, 1) 1px;
+  border-radius: 6px;
+  background: url('/public/images/bgs/shallowwater.webp');
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  background: linear-gradient(0deg, #86ffff 0%, #0063b7 30%, #001a5a 49.9%, #2f65b1 50.1%, #376db5 70%, #c4cfe6 100%);
+  border: rgba(0, 0, 0, 0.5) solid 1px !important;
+  border-radius: 50% !important;
   outline: solid lightblue 1px;
+  margin: 2px;
+}
+
+.leaflet-control-zoom {
+  border: solid white 2px !important;
+  outline: solid lightgray 1px;
+  box-shadow: black 0 0 3px !important;
+  display: flex !important;
+  background: linear-gradient(0deg, #b6c5f5 0%, #c9e3f9 70%, #ebf7fb 70.1%, #ffffff 100%);
 }
 
 .leaflet-control-zoom-in, .leaflet-control-zoom-out {

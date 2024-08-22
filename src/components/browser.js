@@ -58,10 +58,19 @@ const Browser = ({imgdata}) => {
 
     const ImageDetails = () => {
         return (
-            <div style={{height: 'calc(100% - 8px)', width: 'calc(100% - 8px)', margin: '3px', backgroundColor: 'white', border: 'solid 1px #3a3a3a', background: 'url(/images/bgs/shallowwater.webp)', backgroundSize: 'cover', imageRendering: 'pixelated'}}>
-                <h2 style={{color: 'lightblue', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '5px'}}>{activeImage.title}<img alt="" width={'45%'} src={activeImage.thumb !== null ? `https://arina.lol/api/win7/thumb/${activeImage.thumb}` : "/images/bgs/welcome.webp"} /></h2>
-                <p style={{color: 'white', fontSize: '18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '5px'}}><i>{activeImage.short}</i><span style={{fontSize: '12px', color: 'white'}}><Rating activeImage={activeImage} /><b style={{color: 'lightblue', margin: '0 4px 0 20px', fontSize: '12px'}}>{activeImage.date}</b></span></p>
-                <p style={{color: 'white', margin: '3px 5px', fontSize: '14px'}}>{activeImage.description}</p>
+            <div style={{height: 'calc(100% - 8px)', width: 'calc(100% - 8px)', margin: '3px', marginTop: 0, backgroundColor: 'white', border: 'solid 1px #3a3a3a', background: 'url(/images/bgs/shallowwater.webp)', backgroundSize: 'cover', imageRendering: 'pixelated'}}>
+                <div style={{background: 'rgba(120, 120, 240, 0.5)', paddingTop: '3px', borderBottom: 'lightblue solid 1px'}}>
+                    <h2 style={{color: 'lightblue', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '5px', textShadow: 'black 0 0 2px', borderLeft: 'aliceblue 2px solid', borderRadius: '12px', paddingLeft: '2px'}}>{activeImage.title}
+                        <img className="aero-border" style={{boxShadow: 'black 0 0 6px'}} alt="" width={'45%'} src={activeImage.thumb !== null ? `https://arina.lol/api/win7/thumb/${activeImage.thumb}` : "/images/bgs/welcome.webp"} />
+                    </h2>
+                </div>
+                <p style={{color: 'white', fontSize: '18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '5px'}}><i>{activeImage.short}</i>
+                    <span style={{fontSize: '12px', color: 'white', boxShadow: 'none', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '3px', margin: '-5px 0 0 0'}} className="aero-border">
+                        <Rating activeImage={activeImage} />
+                        <b style={{color: 'lightblue', margin: '0 4px 0 20px', fontSize: '12px', textShadow: 'black 0 0 2px', borderLeft: 'aliceblue solid 1px', borderRadius: '4px'}}> {activeImage.date}</b>
+                    </span>
+                </p>
+                <p style={{color: 'white', margin: '3px 5px', fontSize: '16px', boxShadow: 'none', padding: '3px', backgroundColor: 'rgba(55, 102, 147, 0.694)', textShadow: 'gray 0 0 2px'}} className="aero-border" >{activeImage.description}</p>
             </div>
         )
     }
