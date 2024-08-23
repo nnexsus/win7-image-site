@@ -111,7 +111,7 @@ const Browser = ({imgdata}) => {
                 </div>
             </div>
 
-            <div id="details" className="screen internet-explorer-grid" style={{height: 'calc(100% - 58px)', background: 'white'}}>
+            <div className="screen internet-explorer-grid" style={{height: 'calc(100% - 58px)', background: 'white'}}>
                 <div className="nav-buttons browser-toolbar">
                     <p><u>F</u>ile</p>
                     <p><u>E</u>dit</p>

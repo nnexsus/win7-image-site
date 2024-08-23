@@ -66,7 +66,7 @@ const Files = ({files}) => {
                 {files.folders.map((el) => {
                     if (el.folder === curNav) {
                         return (
-                            <button key={`folder-file-${el.id}`} onClick={(e) => folderNav(e.currentTarget.id)} id={`${el.id}`} className="file-folder" style={{width: '125px', height: '125px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15px'}}>
+                            <button key={`folder-file-${el.id}`} onClick={(e) => folderNav(e.currentTarget.id)} id={`${el.id}`} className="file-folder" style={{width: '115px', height: '115px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15px'}}>
                                 <img alt="decor" width={'60px'} height={'60px'} src={`${el.icon}`} />
                                 <p>{el.title}</p>
                             </button>
@@ -81,7 +81,7 @@ const Files = ({files}) => {
                     if (el.folder === curNav) {
                         return ( 
                             <a key={`image-file-${el.id}`} href="#details">
-                                <button id={`${el.id}`} onClick={(e) => fetchImageData(e.currentTarget.id)} className="file-file" style={{width: '125px', height: '125px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15px'}}>
+                                <button id={`${el.id}`} onClick={(e) => fetchImageData(e.currentTarget.id)} className="file-file" style={{width: '115px', height: '115px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15px'}}>
                                     <img alt="decor" width={'60px'} style={{aspectRatio: '16/9'}} onError={(e) => imgError(e.currentTarget)} src={`https://arina.lol/api/win7/thumb/${el.thumb}`} />
                                     <p>{el.title}</p>
                                 </button>
@@ -133,7 +133,7 @@ const Files = ({files}) => {
         return (
             <>
                 <button id="fetchImageDetails" onClick={() => fetchImageData()} style={{display: 'none'}} ></button>
-                <div style={{display: 'flex', justifyContent: 'space-between', margin: '0 13px'}}>
+                <div className="mobile-hide" style={{display: 'flex', justifyContent: 'space-between', margin: '0 13px', overflow: 'hidden'}}>
                     <p style={{marginTop: '2px', color: 'gray'}}>Camera: <br/><span style={{color: '#248aab'}}>{imagedata.camera}</span></p>
                     <p style={{marginTop: '2px', color: 'gray'}}>Dimensions: <br/><span style={{color: '#248aab'}}>{imagedata.dim}</span></p>
                     <p style={{marginTop: '2px', color: 'gray'}}>Aperature: <br/><span style={{color: '#248aab'}}>{imagedata.ap}</span></p>

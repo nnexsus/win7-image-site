@@ -11,7 +11,7 @@ const Player = ({imgdata}) => {
 
     return (
         <>
-            <div className="screen media-player-grid" style={{height: 'calc(100% - 14px)', background: 'white'}}>
+            <div id="details" className="screen media-player-grid" style={{height: 'calc(100% - 14px)', background: 'white'}}>
                 <div className="file-top-bar">
                     <div>
                         <button>Files ▾</button>

@@ -93,7 +93,7 @@ function App() {
         <div className="browser aero-border" style={{gridColumnStart: 25, gridColumnEnd: 40, gridRowStart: 23, gridRowEnd: 40}}>
           <Window window={<Browser imgdata={imagedata}/>} title={"Internet Explorer"} iconpath={"/images/bgs/iexplore.png"} />
         </div>
-        <div style={{gridColumnStart: 20, gridColumnEnd: 25, gridRowStart: 23, gridRowEnd: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div className="mobile-hide" style={{gridColumnStart: 20, gridColumnEnd: 25, gridRowStart: 23, gridRowEnd: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <img src="/signature-logo-white-512.png" height={'100%'} style={{aspectRatio: '1/1'}} />
         </div>
       </>

@@ -277,6 +277,11 @@ body {
     grid-template-columns: 60px calc(100% - 60px);
     grid-template-rows: 32px calc(100% - 90px) 58px;
   }
+
+  .mobile-hide {
+    display: none !important;
+    opacity: 0;
+  }
 }
 
 .leaflet-popup-content {
