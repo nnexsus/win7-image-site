@@ -24,7 +24,7 @@ const Player = ({imgdata}) => {
                         <button><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/help.ico" /></button>
                     </div>
                 </div>
-                <div style={{height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <div style={{height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundImage: 'url(/images/bgs/image-icon.ico)', backgroundSize: '50%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                     {activeImage.type === 'image' ? 
                         <a rel="noreferrer" style={{height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}} href={`/image/${activeImage.source}`} target="_blank">
                             <img className="height-100" style={{cursor: 'pointer'}} alt={`${activeImage.short}`} src={activeImage.source !== null ? `https://arina.lol/api/win7/acfile/${activeImage.source}`: "/images/bgs/welcome.webp"} />

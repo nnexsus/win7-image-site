@@ -5,6 +5,7 @@ const Files = ({files}) => {
     const [curNav, setCurNav] = useState(6)
     const [pastNav, setPastNav] = useState(6)
     const [fileStore, setFileStore] = useState({"images": [], "folders": [{"id": 6, "title": "Pictures", "icon": "/images/bgs/image-folder.ico"}, {"id": 7, "title": "Videos", "icon": "/images/bgs/video-folder.ico"}]})
+    const [folder, setFolder] = useState("")
 
     const fetchImageData = (id) => {
         localStorage.setItem('activeImage', id)
@@ -23,6 +24,9 @@ const Files = ({files}) => {
     const folderNav = (id) => {
         setPastNav(curNav)
         setCurNav(parseInt(id))
+        fileStore.folders.forEach((el) => {
+            if (el.id === id) setFolder(el.title)
+        })
     }
 
     const FileGrid = () => {
@@ -51,6 +55,11 @@ const Files = ({files}) => {
             setFiles(fileStore)
         }, [curNav, setCurNav, fileStore, setFileStore])
 
+        const imgError = (target) => {
+            target.src = '/images/bgs/image-icon.ico';
+            target.style.aspectRatio = '1/1';
+        }
+
         return (
             <div className="file-grid">
                 <button style={{display: 'none'}} id="searchQuery" onClick={() => searchFiles()}></button>
@@ -62,6 +71,10 @@ const Files = ({files}) => {
                                 <p>{el.title}</p>
                             </button>
                         )
+                    } else {
+                        return (
+                            <></>
+                        )
                     }
                 })}
                 {files.images.map((el) => {
@@ -69,10 +82,14 @@ const Files = ({files}) => {
                         return ( 
                             <a key={`image-file-${el.id}`} href="#details">
                                 <button id={`${el.id}`} onClick={(e) => fetchImageData(e.currentTarget.id)} className="file-file" style={{width: '125px', height: '125px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15px'}}>
-                                    <img alt="decor" width={'60px'} style={{aspectRatio: '16/9'}} src={`https://arina.lol/api/win7/thumb/${el.thumb}`} />
+                                    <img alt="decor" width={'60px'} style={{aspectRatio: '16/9'}} onError={(e) => imgError(e.currentTarget)} src={`https://arina.lol/api/win7/thumb/${el.thumb}`} />
                                     <p>{el.title}</p>
                                 </button>
                             </a>
+                        )
+                    } else {
+                        return (
+                            <></>
                         )
                     }
                 })}
@@ -139,7 +156,7 @@ const Files = ({files}) => {
                 </div>
                 <button style={{width: '25px', background: 'none', border: 'none'}}>▾</button>
                 <div className="textbox">
-                    <input type="text" disabled value={`C:\\users\\win7\\`} style={{color: 'black', marginLeft: '5px'}} />
+                    <input type="text" disabled value={`C:\\users\\win7\\${folder}`} style={{color: 'black', marginLeft: '5px'}} />
                     <button style={{width: '25px', background: 'none', border: 'none'}}>▾</button>
                     <button style={{width: '25px', background: 'none', border: 'none', borderLeft: 'solid black 1px'}}><img width={'16px'} height={'16px'} alt="decor" src="/images/bgs/refresh.ico" /></button>
                 </div>

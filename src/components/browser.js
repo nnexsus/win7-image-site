@@ -105,7 +105,7 @@ const Browser = ({imgdata}) => {
                 </div>
                 <button style={{width: '25px', background: 'none', border: 'none'}}>▾</button>
                 <div className="textbox" style={{width: '100%'}}>
-                    <input type="text" />
+                    <input disabled value={activeSite === 'ImageDetails' ? "C:\\site\\imagedetails.html" : "C:\\site\\aboutsite.html"} style={{paddingLeft: '4px', color: 'black'}} type="text" />
                     <button style={{width: '25px', background: 'none', border: 'none'}}>▾</button>
                     <button style={{width: '25px', background: 'none', border: 'none', borderLeft: 'solid black 1px'}}><img width={'16px'} height={'16px'} alt="decor" src="/images/bgs/refresh.png" /></button>
                 </div>
