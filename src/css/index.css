@@ -262,6 +262,69 @@ body {
   aspect-ratio: 16 / 9;
 }
 
+.media-player {
+  grid-column-start: 21;
+  grid-column-end: 40;
+  grid-row-start: 2; 
+  grid-row-end: 22
+}
+
+.browser {
+  grid-column-start: 25;
+  grid-column-end: 40;
+  grid-row-start: 23;
+  grid-row-end: 40;
+}
+
+.map {
+  grid-column-start: 2;
+  grid-column-end: 24;
+  grid-row-start: 29;
+  grid-row-end: 40;
+}
+
+.file-explorer {
+  grid-column-start: 2;
+  grid-column-end: 20;
+  grid-row-start: 2;
+  grid-row-end: 28;
+}
+
+@media screen and (max-height: 925px) {
+  .media-player {
+    grid-column-start: 2;
+    grid-column-end: 24;
+    grid-row-start: 23; 
+    grid-row-end: 40;
+  }
+  
+  .browser {
+    grid-column-start: 25;
+    grid-column-end: 40;
+    grid-row-start: 2;
+    grid-row-end: 28;
+  }
+  
+  .map {
+    grid-column-start: 25;
+    grid-column-end: 40;
+    grid-row-start: 29;
+    grid-row-end: 40;
+  }
+  
+  .file-explorer {
+    grid-column-start: 2;
+    grid-column-end: 24;
+    grid-row-start: 2;
+    grid-row-end: 23;
+  }
+
+  .short-hide {
+    display: none;
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .desktop {
     display: flex;

@@ -33,10 +33,10 @@ function App() {
 
     return (
       <>
-        <div className="file-explorer aero-border" style={{gridColumnStart: 2, gridColumnEnd: 20, gridRowStart: 2, gridRowEnd: 28}}>
+        <div className="file-explorer aero-border">
           <Window window={<Files files={files}/>} title={"File Explorer"} iconpath={"/images/bgs/file-folder.png"} />
         </div>
-        <div className="browser aero-border" style={{gridColumnStart: 2, gridColumnEnd: 24, gridRowStart: 29, gridRowEnd: 40}}>
+        <div className="map aero-border">
           <Window window={<Map/>} title={"Map Explorer"} iconpath={"/images/bgs/earth.png"} />
         </div>
         <ImageReliant files={files} />
@@ -87,13 +87,13 @@ function App() {
     return (
       <>
         <button id="fetchImageData" style={{opacity: 0}} onClick={() => fetchImageData()} ></button>
-        <div className="media-player aero-border" style={{gridColumnStart: 21, gridColumnEnd: 40, gridRowStart: 2, gridRowEnd: 22}}>
+        <div className="media-player aero-border">
           <Window window={<Player imgdata={imagedata}/>} title={"Windows Media Player"} iconpath={"/images/bgs/mediaplayer.png"} />
         </div>
-        <div className="browser aero-border" style={{gridColumnStart: 25, gridColumnEnd: 40, gridRowStart: 23, gridRowEnd: 40}}>
+        <div className="browser aero-border">
           <Window window={<Browser imgdata={imagedata}/>} title={"Internet Explorer"} iconpath={"/images/bgs/iexplore.png"} />
         </div>
-        <div className="mobile-hide" style={{gridColumnStart: 20, gridColumnEnd: 25, gridRowStart: 23, gridRowEnd: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div className="mobile-hide short-hide" style={{gridColumnStart: 20, gridColumnEnd: 25, gridRowStart: 23, gridRowEnd: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <img src="/signature-logo-white-512.png" height={'100%'} style={{aspectRatio: '1/1'}} />
         </div>
       </>
