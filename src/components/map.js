@@ -38,7 +38,7 @@ const Map = () => {
                     const id = localStorage.getItem('activeImage')
                     markerstate.forEach((el) => {
                         if(el.win7id === parseInt(id)) {
-                            var latlng = [el.coordinates[0] + 0.5, el.coordinates[1]]
+                            var latlng = [el.coordinates[0] + 0.1, el.coordinates[1]]
                             map.flyTo(latlng, 8)
                             markerRef.current.forEach((li, ind) => {
                                 if(li._latlng.lat === el.coordinates[0]) console.log(markerRef.current[ind]._icon.click())
@@ -62,9 +62,11 @@ const Map = () => {
                             const Link = () => {
                                 return (
                                     <div key={el.win7id} style={{display: 'flex', flexDirection: 'column'}}>
-                                        <button className="star-button" style={{margin: '0 7px'}} id={`${el.win7id}`} onClick={(e) => fetchImageData(e.currentTarget.id)}>Open Source</button>
+                                        <div style={{display: 'flex'}}>
+                                            <button className="star-button" style={{margin: '0 7px'}} id={`${el.win7id}`} onClick={(e) => fetchImageData(e.currentTarget.id)}>Open Source</button>
+                                            <button className="star-button" style={{margin: '0 7px', background: 'linear-gradient(0deg, rgb(199, 123, 101) 0%, rgb(189, 65, 48) 46%, rgb(189, 65, 48) 50%, rgb(209, 121, 111) 54%, rgb(219, 167, 164) 100%)'}} onClick={() => document.getElementsByClassName('leaflet-popup-close-button')[0].click()}>Close</button>
+                                        </div>
                                         <iframe title="Image previewer." style={{margin: '0 2px', width: 'calc(100% - 6px)', boxShadow: 'none'}} className="aero-border" src={`${el.link}`} alt="decor" width={'240px'} height={'120px'} />
-                                        <button className="star-button" style={{margin: '0 7px', background: 'linear-gradient(0deg, rgb(199, 123, 101) 0%, rgb(189, 65, 48) 46%, rgb(189, 65, 48) 50%, rgb(209, 121, 111) 54%, rgb(219, 167, 164) 100%)'}} onClick={() => document.getElementsByClassName('leaflet-popup-close-button')[0].click()}>Close</button>
                                     </div>
                                 )
                             }

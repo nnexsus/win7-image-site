@@ -166,8 +166,8 @@ const Files = ({files}) => {
 
                 <div className="file-navigator">
                     <div>
-                        <p style={{cursor: 'pointer', margin: '2px 5px'}}><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/photo-icon.png" style={{margin: '0 6px'}} onClick={() => folderNav(6)} /> Pictures</p>
-                        <p style={{cursor: 'pointer', margin: '2px 5px'}}><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/video-icon.png" style={{margin: '0 6px'}} onClick={() => folderNav(7)} /> Videos</p>
+                        <p style={{cursor: 'pointer', margin: '2px 5px', border: 'solid rgba(0,0,0,0.2) 1px'}} onClick={() => folderNav('6')}><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/photo-icon.png" style={{margin: '0 6px'}} /> Pictures</p>
+                        <p style={{cursor: 'pointer', margin: '2px 5px', border: 'solid rgba(0,0,0,0.2) 1px'}} onClick={() => folderNav('7')}><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/video-icon.png" style={{margin: '0 6px'}} /> Videos</p>
                     </div>
                 </div>
 

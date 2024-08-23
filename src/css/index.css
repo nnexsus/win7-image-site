@@ -302,10 +302,12 @@ body {
 
 .leaflet-popup-content-wrapper p {
   text-align: center;
+  margin: 0 2px;
 }
 
 .leaflet-popup-content {
-  outline: solid rgba(200, 200, 240, 1) 1px;
+  outline: solid rgba(230, 230, 255, 1) 1px;
+  border: solid black 1px;
   border-radius: 6px;
   background: url('/public/images/bgs/shallowwater.webp');
 }
@@ -316,6 +318,23 @@ body {
   border-radius: 50% !important;
   outline: solid lightblue 1px;
   margin: 2px;
+}
+
+.leaflet-control-zoom-in span, .leaflet-control-zoom-out span {
+  color: rgba(0,0,0,0) !important;
+  font-size: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.leaflet-control-zoom-in span {
+  background-image: url('/public/images/bgs/nav-plus.png');
+}
+
+.leaflet-control-zoom-out span {
+  font-size: 24px;
+  background-image: url('/public/images/bgs/nav-minus.png');
 }
 
 .leaflet-control-zoom {
@@ -358,4 +377,8 @@ body {
 .leaflet-control-attribution.leaflet-control a, .leaflet-control-attribution.leaflet-control span {
   font-family: ms ui gothic;
   color: lightblue;
+}
+
+.leaflet-attribution-flag {
+  display: none !important;
 }

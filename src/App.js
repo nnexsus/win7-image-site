@@ -33,10 +33,10 @@ function App() {
 
     return (
       <>
-        <div className="file-explorer aero-border" style={{gridColumnStart: 2, gridColumnEnd: 24, gridRowStart: 2, gridRowEnd: 20}}>
+        <div className="file-explorer aero-border" style={{gridColumnStart: 2, gridColumnEnd: 20, gridRowStart: 2, gridRowEnd: 28}}>
           <Window window={<Files files={files}/>} title={"File Explorer"} iconpath={"/images/bgs/file-folder.png"} />
         </div>
-        <div className="browser aero-border" style={{gridColumnStart: 26, gridColumnEnd: 40, gridRowStart: 28, gridRowEnd: 40}}>
+        <div className="browser aero-border" style={{gridColumnStart: 2, gridColumnEnd: 24, gridRowStart: 29, gridRowEnd: 40}}>
           <Window window={<Map/>} title={"Map Explorer"} iconpath={"/images/bgs/earth.png"} />
         </div>
         <ImageReliant files={files} />
@@ -87,11 +87,14 @@ function App() {
     return (
       <>
         <button id="fetchImageData" style={{opacity: 0}} onClick={() => fetchImageData()} ></button>
-        <div className="media-player aero-border" style={{gridColumnStart: 2, gridColumnEnd: 25, gridRowStart: 22, gridRowEnd: 40}}>
+        <div className="media-player aero-border" style={{gridColumnStart: 21, gridColumnEnd: 40, gridRowStart: 2, gridRowEnd: 22}}>
           <Window window={<Player imgdata={imagedata}/>} title={"Windows Media Player"} iconpath={"/images/bgs/mediaplayer.png"} />
         </div>
-        <div className="browser aero-border" style={{gridColumnStart: 26, gridColumnEnd: 40, gridRowStart: 2, gridRowEnd: 26}}>
+        <div className="browser aero-border" style={{gridColumnStart: 25, gridColumnEnd: 40, gridRowStart: 23, gridRowEnd: 40}}>
           <Window window={<Browser imgdata={imagedata}/>} title={"Internet Explorer"} iconpath={"/images/bgs/iexplore.png"} />
+        </div>
+        <div style={{gridColumnStart: 20, gridColumnEnd: 25, gridRowStart: 23, gridRowEnd: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <img src="/signature-logo-white-512.png" height={'100%'} style={{aspectRatio: '1/1'}} />
         </div>
       </>
     )

@@ -47,7 +47,7 @@ const Browser = ({imgdata}) => {
         return (
             <>            
                 {activeImage.rating !== null ?
-                    <button className="star-button" id={`/star/${activeImage.source}`} style={{borderRadius: '3px', cursor: 'pointer'}} onClick={(e) => starImage(e.currentTarget.id)}>
+                    <button className="star-button" id={`/star/${activeImage.source}`} style={{borderRadius: '3px', cursor: 'pointer', display: 'flex', alignItems: 'center'}} onClick={(e) => starImage(e.currentTarget.id)}>
                         <img alt="star" width={'16px'} height={'16px'} src="/images/bgs/star.ico" />
                         {rating}
                     </button>
@@ -58,16 +58,16 @@ const Browser = ({imgdata}) => {
 
     const ImageDetails = () => {
         return (
-            <div style={{height: 'calc(100% - 8px)', width: 'calc(100% - 8px)', margin: '3px', marginTop: 0, backgroundColor: 'white', border: 'solid 1px #3a3a3a', background: 'url(/images/bgs/shallowwater.webp)', backgroundSize: 'cover', imageRendering: 'pixelated'}}>
+            <div style={{width: 'calc(100% - 8px)', margin: '3px', marginTop: 0, backgroundColor: 'white', border: 'solid 1px #3a3a3a', background: 'url(/images/bgs/shallowwater.webp)', backgroundSize: 'cover', imageRendering: 'pixelated'}}>
                 <div style={{background: 'rgba(120, 120, 240, 0.5)', paddingTop: '3px', borderBottom: 'lightblue solid 1px'}}>
                     <h2 style={{color: 'lightblue', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '5px', textShadow: 'black 0 0 2px', borderLeft: 'aliceblue 2px solid', borderRadius: '12px', paddingLeft: '2px'}}>{activeImage.title}
                         <img className="aero-border" style={{boxShadow: 'black 0 0 6px'}} alt="" width={'45%'} src={activeImage.thumb !== null ? `https://arina.lol/api/win7/thumb/${activeImage.thumb}` : "/images/bgs/welcome.webp"} />
                     </h2>
                 </div>
-                <p style={{color: 'white', fontSize: '18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '5px'}}><i>{activeImage.short}</i>
-                    <span style={{fontSize: '12px', color: 'white', boxShadow: 'none', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '3px', margin: '-5px 0 0 0'}} className="aero-border">
+                <p style={{color: 'white', fontSize: '18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '5px', alignItems: 'stretch'}}><i>{activeImage.short}</i>
+                    <span style={{fontSize: '12px', color: 'white', boxShadow: 'none', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '3px', margin: '-5px 0 0 0', display: 'flex', alignItems: 'center'}} className="aero-border">
                         <Rating activeImage={activeImage} />
-                        <b style={{color: 'lightblue', margin: '0 4px 0 20px', fontSize: '12px', textShadow: 'black 0 0 2px', borderLeft: 'aliceblue solid 1px', borderRadius: '4px'}}> {activeImage.date}</b>
+                        <b style={{color: 'lightblue', margin: '0 4px 0 20px', fontSize: '12px', textShadow: 'black 0 0 2px', borderLeft: 'aliceblue solid 1px', borderRadius: '4px', whiteSpace: 'nowrap'}}> {activeImage.date}</b>
                     </span>
                 </p>
                 <p style={{color: 'white', margin: '3px 5px', fontSize: '16px', boxShadow: 'none', padding: '3px', backgroundColor: 'rgba(55, 102, 147, 0.694)', textShadow: 'gray 0 0 2px'}} className="aero-border" >{activeImage.description}</p>
@@ -77,7 +77,7 @@ const Browser = ({imgdata}) => {
 
     const SiteDetails = () => {
         return (
-            <div style={{height: 'calc(100% - 8px)', width: 'calc(100% - 8px)', margin: '3px', backgroundColor: 'white', border: 'solid 1px #3a3a3a', background: 'url(/images/bgs/Circles.png)', backgroundSize: '75px', imageRendering: 'pixelated'}}>
+            <div style={{width: 'calc(100% - 8px)', margin: '3px', backgroundColor: 'white', border: 'solid 1px #3a3a3a', background: 'url(/images/bgs/Circles.png)', backgroundSize: '75px', imageRendering: 'pixelated'}}>
                 <h2 style={{color: 'lightblue', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '5px'}}>nnexsus.net<img alt="" width={'45%'} src={`/images/signature-logo-white.png`} /></h2>
                 <p style={{color: 'white', margin: '3px 5px', fontSize: '14px'}}>
                     <span style={{fontSize: '14px'}}><b>Welcome to nnexsus.net! This site is a small Windows 7 design inspired site to view any of my photos or videos in higher quality than social media, and all in one place!</b></span>
@@ -132,7 +132,7 @@ const Browser = ({imgdata}) => {
                     <div className="browser-tab extra-browser-tab" style={{borderLeft: 'none'}}></div>
                 </div>
                 <div style={{height: '3px', background: 'linear-gradient(0deg, #a7a398 0%, #bcd1ff 50%, #aabef4 100%)'}}></div>
-                <div style={{background: '#bcd1ff', height: '100%'}}>
+                <div style={{background: '#bcd1ff', height: '100%', overflowY: 'scroll'}}>
                     {activeSite === "ImageDetails" ?
                         <ImageDetails/>
                     : <SiteDetails/>}
