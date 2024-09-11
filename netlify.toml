@@ -1,11 +1,11 @@
 [[redirects]]
-    from = "/*"
-    to = "/index.html"
-    status = 200
-[[redirects]]
     force = true
     from = "/image/*"
-    to = "/image/:id"
+    to = "/image/:splat"
+    status = 200
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
     status = 200
 [build]
   command = "CI=false npm run build"
