@@ -12,7 +12,7 @@ root.render(
   <>
       <Router>
         <Routes>
-          <Route path='/image/:id' element={<Image/>}/>
+          <Route path='/getimage/:id' element={<Image/>}/>
           <Route path='/' element={<App/>}/>
         </Routes>
       </Router>

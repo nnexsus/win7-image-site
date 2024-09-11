@@ -3,7 +3,3 @@ export default async (req, context) => {
 
     return new Response(`Hello, world! ${ id }`);
 };
-
-export const config = {
-    path: "/image/:id"
-};
