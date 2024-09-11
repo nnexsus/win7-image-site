@@ -7,7 +7,7 @@ export default async (req, context) => {
         }
       });
 
-    return new Response(body);
+    return new Response(JSON.stringify(body));
 };
 
 export const config = {
