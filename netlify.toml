@@ -1,7 +1,7 @@
 [[redirects]]
     force = true
-    from = "/image/*"
-    to = "/image/:splat"
+    from = "/imagetag/*"
+    to = "/imagetag/:splat"
     status = 200
 [[redirects]]
     from = "/*"

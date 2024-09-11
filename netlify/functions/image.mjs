@@ -9,5 +9,5 @@ export default async (req, context) => {
 };
 
 export const config = {
-    path: "/image/:id"
+    path: "/imagetag/:id"
 };  
