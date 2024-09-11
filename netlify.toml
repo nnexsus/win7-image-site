@@ -1,4 +1,8 @@
 [[redirects]]
-from = "/site/*"
-to = "/index.html"
-status = 200
+    from = "/site/*"
+    to = "/index.html"
+    status = 200
+[build]
+  command = "CI=false npm run build"
+  functions = "netlify/functions"
+  publish = "build"
