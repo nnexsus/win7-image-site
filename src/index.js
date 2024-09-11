@@ -14,7 +14,6 @@ root.render(
         <Routes>
           <Route path='/image/:id' element={<Image/>}/>
           <Route path='/' element={<App/>}/>
-          <Route path='*' element={<App/>}/>
         </Routes>
       </Router>
   </>
