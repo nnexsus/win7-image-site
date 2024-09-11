@@ -3,7 +3,7 @@
     to = "/index.html"
     status = 200
 [[redirects]]
-    force: true
+    force = true
     from = "/image/*"
     to = "/image/:id"
     status = 200
