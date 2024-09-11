@@ -30,7 +30,7 @@ const Player = ({imgdata}) => {
                             <img className="height-100" style={{cursor: 'pointer'}} alt={`${activeImage.short}`} src={activeImage.source !== null ? `https://arina.lol/api/win7/acfile/${activeImage.source}`: "/images/bgs/welcome.webp"} />
                         </a>
                     : 
-                        <video className="height-100" src={`https://arina.lol/api/win7/acfile/${activeImage.source}`} />
+                        <video className="height-100" controls src={`https://arina.lol/api/win7/acfile/${activeImage.source}`} />
                     }
                 </div>
             </div>

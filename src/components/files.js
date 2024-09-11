@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react"
 
+const baubles = [
+    {hue: 'hue-shift(0deg)', desc: 'Featured Image!'}, 
+    {hue: 'hue-rotate(195deg) saturate(1.5)', desc: 'New!'}, 
+    {hue: 'hue-rotate(302deg) saturate(1.5)', desc: 'Updated!'}, 
+    {hue: 'hue-rotate(98deg)', desc: 'New, but older image.'}, 
+    {hue: 'saturate(2) hue-rotate(53deg)', desc: 'File expiring! Will be removed soon.'}, 
+    {hue: 'saturate(0)', desc: 'Particularly Large File.'}, 
+    {hue: 'hue-rotate(98deg)', desc: 'Raw image type.'}, 
+    {hue: 'hue-rotate(147deg) saturate(2.5) brightness(1.2)', desc: 'Personal Favorite!'}
+]
+
 const Files = ({files}) => {
 
     const [curNav, setCurNav] = useState(6)
-    const [pastNav, setPastNav] = useState(6)
+    const [pastNav, setPastNav] = useState([6])
+    const [recentNav, setRecentNav]= useState(6)
     const [fileStore, setFileStore] = useState({"images": [], "folders": [{"id": 6, "title": "Pictures", "icon": "/images/bgs/image-folder.ico"}, {"id": 7, "title": "Videos", "icon": "/images/bgs/video-folder.ico"}]})
     const [folder, setFolder] = useState("")
 
@@ -22,11 +34,31 @@ const Files = ({files}) => {
     }, [files])
 
     const folderNav = (id) => {
-        setPastNav(curNav)
+        var navback = [...pastNav]
+        navback.push(curNav)
+        setPastNav(navback)
         setCurNav(parseInt(id))
+        setRecentNav(parseInt(id))
         fileStore.folders.forEach((el) => {
             if (el.id === id) setFolder(el.title)
         })
+    }
+
+    const navBack = () => {
+        var navback = [...pastNav]
+        var x = navback.pop()
+        setPastNav(navback.length === 0 ? [6] : navback)
+        setCurNav(x)
+        fileStore.folders.forEach((el) => {
+            if (el.id === x) setFolder(el.title)
+        })
+    }
+
+    const navForward = () => {
+        var navback = [...pastNav]
+        navback.push(curNav)
+        setPastNav(navback)
+        setCurNav(recentNav)
     }
 
     const FileGrid = () => {
@@ -57,7 +89,7 @@ const Files = ({files}) => {
 
         const imgError = (target) => {
             target.src = '/images/bgs/image-icon.ico';
-            target.style.aspectRatio = '1/1';
+            target.style.aspectRatio = '16/9';
         }
 
         return (
@@ -67,8 +99,11 @@ const Files = ({files}) => {
                     if (el.folder === curNav) {
                         return (
                             <button key={`folder-file-${el.id}`} onClick={(e) => folderNav(e.currentTarget.id)} id={`${el.id}`} className="file-folder" style={{width: '115px', height: '115px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15px'}}>
-                                <img alt="decor" width={'60px'} height={'60px'} src={`${el.icon}`} />
-                                <p>{el.title}</p>
+                                <div style={{height: '67px', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundImage: 'url(/images/bgs/folder-half-back.ico)', backgroundSize: '100% 100%'}}>
+                                    <img alt="decor" width={'60px'} height={'60px'} src={`/images/bgs/folder-half-front.ico`} style={{marginLeft: '-8px', marginBottom: '-60px', zIndex: 8}} />
+                                    <img alt="decor" width={'60px'} height={'45px'} src={`${el.icon}`} style={{marginLeft: '4px', marginTop: '10px', zIndex: 7, transform: 'skewY(16deg)'}} />
+                                </div>
+                                <p style={{height: '1px'}}>{el.title}</p>
                             </button>
                         )
                     } else {
@@ -79,10 +114,14 @@ const Files = ({files}) => {
                 })}
                 {files.images.map((el) => {
                     if (el.folder === curNav) {
+                        console.log(el.public)
                         return ( 
-                            <a key={`image-file-${el.id}`} href="#details">
-                                <button id={`${el.id}`} onClick={(e) => fetchImageData(e.currentTarget.id)} className="file-file" style={{width: '115px', height: '115px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15px'}}>
-                                    <img alt="decor" width={'60px'} style={{aspectRatio: '16/9'}} onError={(e) => imgError(e.currentTarget)} src={`https://arina.lol/api/win7/thumb/${el.thumb}`} />
+                            <a key={`image-file-${el.id}`} href="#details" style={{cursor: 'default'}}>
+                                {el.public !== null ?
+                                    <img alt="decor" width={'16px'} height={'16px'} src={`/images/bgs/bauble.png`} title={`${baubles[el.public].desc}`} style={{marginLeft: '105px', marginBottom: '-35px', zIndex: 500, imageRendering: 'pixelated', filter: `${baubles[el.public].hue}`}} />
+                                : null}
+                                <button id={`${el.id}`} onClick={(e) => fetchImageData(e.currentTarget.id)} className="file-file" style={{width: '115px', height: '115px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '15px', backgroundImage: `${el.type === "video" ? 'url(/images/bgs/film-reel-border.ico)' : 'none'}`, backgroundSize: '100% 100%'}}>
+                                    <img alt="decor" width={'60px'} style={{aspectRatio: '16/9', border: 'solid 2px white', outline: '1px solid lightgray', borderRadius: '1px'}} onError={(e) => imgError(e.currentTarget)} src={`https://arina.lol/api/win7/thumb/${el.thumb}`} />
                                     <p>{el.title}</p>
                                 </button>
                             </a>
@@ -119,7 +158,6 @@ const Files = ({files}) => {
                 if (el.id === parseInt(localStorage.getItem('activeImage'))) {
                     if (el.settings === null) return setImagedata({camera: '', dim: '', ap: '', exp: '', iso: '', mm: '', size: ''})
                     var re = el.settings.replace(/'/g, '"')
-                    console.log(re)
                     setImagedata(JSON.parse(re))
                 }
               })
@@ -150,9 +188,9 @@ const Files = ({files}) => {
         <>
             <div className="toolbar">
                 <div className="nav-buttons">
-                    <div style={{zIndex: 3}}><button onClick={() => folderNav(pastNav)}><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/nav-arrow.png" /></button></div>
+                    <div style={{zIndex: 3}}><button onClick={() => navBack()}><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/nav-arrow.png" /></button></div>
                     <div style={{borderRadius: 0, marginLeft: '-15px', marginRight: '-15px', zIndex: 2, width: '15px', height: '19px', marginTop: '3px'}}></div>
-                    <div style={{zIndex: 3}}><button onClick={() => folderNav(pastNav)}><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/nav-arrow.png" style={{transform: 'rotateY(180deg)'}} /></button></div>
+                    <div style={{zIndex: 3}}><button onClick={() => navForward()}><img alt="decor" width={'16px'} height={'16px'} src="/images/bgs/nav-arrow.png" style={{transform: 'rotateY(180deg)'}} /></button></div>
                 </div>
                 <button style={{width: '25px', background: 'none', border: 'none'}}>▾</button>
                 <div className="textbox">

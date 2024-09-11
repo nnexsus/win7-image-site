@@ -10,12 +10,12 @@ import './css/index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <Router>
-      <Routes>
-        <Route path='/image/:id' element={<Image/>}/>
-        <Route path='/' element={<App/>}/>
-        <Route path='*' element={<App/>}/>
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path='/image/:id' element={<Image/>}/>
+          <Route path='/' element={<App/>}/>
+          <Route path='*' element={<App/>}/>
+        </Routes>
+      </Router>
   </>
 );
